@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-3">Счётчик посещений</h1>
+        <p class="mb-0">Вы посетили эту страницу <strong>{{ visits }}</strong> раз(а) в рамках текущей сессии.</p>
+    </div>
+</div>
+{% endblock %}

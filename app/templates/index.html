@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 bg-white rounded-3 shadow-sm">
+    <h1 class="mb-3">Лабораторная работа №3</h1>
+    <p class="lead">Реализация аутентификации пользователей с использованием Flask и Flask-Login.</p>
+
+    {% if current_user.is_authenticated %}
+        <div class="alert alert-success mb-4">
+            Вход выполнен успешно. Добро пожаловать, {{ current_user.username }}.
+        </div>
+    {% else %}
+        <div class="alert alert-secondary mb-4">
+            Вы не аутентифицированы. Для доступа к секретной странице выполните вход.
+        </div>
+    {% endif %}
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Счётчик посещений</h5>
+                    <p class="card-text">Страница считает количество ваших посещений через объект session.</p>
+                    <a href="{{ url_for('counter') }}" class="btn btn-primary">Открыть</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Вход</h5>
+                    <p class="card-text">Форма аутентификации пользователя user / qwerty с опцией «Запомнить меня».</p>
+                    <a href="{{ url_for('login') }}" class="btn btn-primary">Открыть</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Секретная страница</h5>
+                    <p class="card-text">Доступна только после успешной аутентификации.</p>
+                    <a href="{{ url_for('secret') }}" class="btn btn-primary">Открыть</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
